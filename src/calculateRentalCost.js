@@ -5,16 +5,23 @@
  */
 function calculateRentalCost(days) {
   // write code here
-  const dailyRate = 40;
-  const baseCost = days * dailyRate;
+  const DAILY_RATE = 40;
+  const LONG_RENTAL_THRESHOLD = 7;
+  const LONG_RENTAL_DISCOUNT = 50;
+  const SHORT_RENTAL_THRESHOLD = 3;
+  const SHORT_RENTAL_DISCOUNT = 20;
 
-  if (days >= 7) {
-    return baseCost - 50;
-  } else if (days >= 3) {
-    return baseCost - 20;
-  } else {
-    return baseCost;
+  const baseCost = days * DAILY_RATE;
+
+  if (days >= LONG_RENTAL_THRESHOLD) {
+    return baseCost - LONG_RENTAL_DISCOUNT;
   }
+
+  if (days >= SHORT_RENTAL_THRESHOLD) {
+    return baseCost - SHORT_RENTAL_DISCOUNT;
+  }
+
+  return baseCost;
 }
 
 module.exports = calculateRentalCost;
